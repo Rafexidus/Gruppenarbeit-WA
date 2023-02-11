@@ -1,4 +1,4 @@
-rm(list = ls()) #löscht alle derzeitigen values
+rm(list = ls()) #loescht alle derzeitigen values
 set.seed(123)
 
 df = data.frame(matrix(ncol = 5, nrow = 100))
@@ -9,3 +9,6 @@ Studium = c("Statistik", "Data Science", "Mathe", "Informatik") #Vektor mit vier
 MatheInteresse = c(1,2,3,4,5,6,7)
 ProgrammierenInteresse = c(1,2,3,4,5,6,7)
 MatheLKJaNein = c("Ja", "Nein")
+
+Studienfach = sample(Studium , 100, replace = TRUE, prob = c(0.3, 0.3, 0.16, 0.24)) #Waehlt mit verschiedenen Wahrscheinlichkeiten aus den Studiengaengen 100 mal aus
+

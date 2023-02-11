@@ -3,3 +3,9 @@ set.seed(123)
 
 df = data.frame(matrix(ncol = 5, nrow = 100))
 colnames(df) <- c('Alter', 'Studienfach', 'InteresseAnMathematik', 'InteresseAnProgrammieren', 'MatheLK')
+
+Alter = round(rnorm(100,25,2)) #Vektor mit 100 zufälligen normalverteilten Werten mit EW = 25 und sd = 2
+Studium = c("Statistik", "Data Science", "Mathe", "Informatik") #Vektor mit vier vorgegebenen Studiengängen
+MatheInteresse = c(1,2,3,4,5,6,7)
+ProgrammierenInteresse = c(1,2,3,4,5,6,7)
+MatheLKJaNein = c("Ja", "Nein")

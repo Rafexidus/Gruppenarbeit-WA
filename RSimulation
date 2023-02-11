@@ -1,1 +1,5 @@
+rm(list = ls()) #löscht alle derzeitigen values
+set.seed(123)
 
+df = data.frame(matrix(ncol = 5, nrow = 100))
+colnames(df) <- c('Alter', 'Studienfach', 'InteresseAnMathematik', 'InteresseAnProgrammieren', 'MatheLK')

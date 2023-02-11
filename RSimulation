@@ -12,3 +12,7 @@ MatheLKJaNein = c("Ja", "Nein")
 
 Studienfach = sample(Studium , 100, replace = TRUE, prob = c(0.3, 0.3, 0.16, 0.24)) #Waehlt mit verschiedenen Wahrscheinlichkeiten aus den Studiengaengen 100 mal aus
 
+Statistiker = which(Studienfach == "Statistik") #Indize aller Statistik Studenten
+Data_Scientists = which(Studienfach == "Data Science") #Indize aller Data Scientist Studenten
+Informatiker = which(Studienfach == "Informatik") #Indize aller Informatik Studenten
+Mathematiker = which(Studienfach == "Mathe") #Indize aller Mathe Studenten

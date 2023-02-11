@@ -26,10 +26,10 @@ MIS = sample(MatheInteresse, length(which(Studienfach == "Statistik")), replace 
 MID = sample(MatheInteresse, length(which(Studienfach == "Data Science")), replace = TRUE, prob = c(0.08, 0.14, 0.2, 0.22, 0.17, 0.12, 0.07))
 MII = sample(MatheInteresse, length(which(Studienfach == "Informatik" )), replace = TRUE, prob = c(0.1, 0.17, 0.22, 0.22, 0.15, 0.09, 0.05))
 
-IIM = sample(ProgrammierenInteresse, length(which(Studienfach == "Mathe")), replace = TRUE, prob = c(0.15, 0.22, 0.25 , 0.17 , 0.11, 0.07, 0.03))
-IIS = sample(ProgrammierenInteresse, length(which(Studienfach == "Statistik")), replace = TRUE, prob = c(0.04, 0.09, 0.25, 0.3, 0.2, 0.08, 0.04))
-IID = sample(ProgrammierenInteresse, length(which(Studienfach == "Data Science")), replace = TRUE, prob = c(0, 0.04, 0.17, 0.25, 0.25, 0.17, 0.12))
-III = sample(ProgrammierenInteresse, length(which(Studienfach == "Informatik" )), replace = TRUE, prob = c(0, 0, 0.05, 0.15, 0.22 , 0.31, 0.27))
+PIM = sample(ProgrammierenInteresse, length(which(Studienfach == "Mathe")), replace = TRUE, prob = c(0.15, 0.22, 0.25 , 0.17 , 0.11, 0.07, 0.03))
+PIS = sample(ProgrammierenInteresse, length(which(Studienfach == "Statistik")), replace = TRUE, prob = c(0.04, 0.09, 0.25, 0.3, 0.2, 0.08, 0.04))
+PID = sample(ProgrammierenInteresse, length(which(Studienfach == "Data Science")), replace = TRUE, prob = c(0, 0.04, 0.17, 0.25, 0.25, 0.17, 0.12))
+PII = sample(ProgrammierenInteresse, length(which(Studienfach == "Informatik" )), replace = TRUE, prob = c(0, 0, 0.05, 0.15, 0.22 , 0.31, 0.27))
 
 
 #Wir erstellen einen Vektor, in dem wir die Werte für das Interesse an Mathe an die passenden Indizes setzen.
@@ -67,8 +67,8 @@ for(i in 1:100)
     m = m+1
   }
 }
-
-#Analog für Interesse an Programmieren:
+IntMatArr
+#Analog für Interesse am Programmieren:
 
 IntProArr = c()
 
@@ -97,6 +97,50 @@ for(r in 1:100)
   else
   {
     IntProArr[Informatiker[q]] = PII[q]
+    q = q+1
+  }
+}
+
+
+#Hier unten folgen vier Vektoren mit den Antworten der Studenten, ob sie einen Mathe LK belegt hatten.
+#Für alle vier Studiengänge setzen sich unterschiedliche Wahrscheinlichkeiten für die Antworten zusammen.
+#Wieder sind die Verteilungen nach Logik gefallen.
+
+MatheMatheLK = sample(MatheLKJaNein, length(which(Studienfach == "Mathe")), replace = TRUE, prob = c(0.9, 0.1))
+StatistikMatheLK = sample(MatheLKJaNein, length(which(Studienfach == "Statistik")), replace = TRUE, prob = c(0.8, 0.2))
+DataScienceMatheLK = sample(MatheLKJaNein, length(which(Studienfach == "Data Science")), replace = TRUE, prob = c(0.6,0.4))
+InformatikMatheLK = sample(MatheLKJaNein, length(which(Studienfach == "Informatik" )), replace = TRUE, prob = c(0.33, 0.67))
+
+
+#Analoge Schleife wie im obigen Fällen
+
+n=1
+o=1
+p=1
+q=1
+
+LKArr = c()
+
+for(r in 1:100)
+{
+  if(Studienfach[r] == "Mathe")
+  {
+    LKArr[Mathematiker[n]] = MatheMatheLK[n]
+    n = n+1
+  }
+  else if(Studienfach[r] == "Statistik")
+  {
+    LKArr[Statistiker[o]] = StatistikMatheLK[o]
+    o = o+1
+  }
+  else if(Studienfach[r] == "Data Science")
+  {
+    LKArr[Data_Scientists[p]] = DataScienceMatheLK[p]
+    p = p+1
+  }
+  else
+  {
+    LKArr[Informatiker[q]] = InformatikMatheLK[q]
     q = q+1
   }
 }

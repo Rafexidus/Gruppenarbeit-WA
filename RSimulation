@@ -30,3 +30,73 @@ IIM = sample(ProgrammierenInteresse, length(which(Studienfach == "Mathe")), repl
 IIS = sample(ProgrammierenInteresse, length(which(Studienfach == "Statistik")), replace = TRUE, prob = c(0.04, 0.09, 0.25, 0.3, 0.2, 0.08, 0.04))
 IID = sample(ProgrammierenInteresse, length(which(Studienfach == "Data Science")), replace = TRUE, prob = c(0, 0.04, 0.17, 0.25, 0.25, 0.17, 0.12))
 III = sample(ProgrammierenInteresse, length(which(Studienfach == "Informatik" )), replace = TRUE, prob = c(0, 0, 0.05, 0.15, 0.22 , 0.31, 0.27))
+
+
+#Wir erstellen einen Vektor, in dem wir die Werte für das Interesse an Mathe an die passenden Indizes setzen.
+#Dazu durchlaufen wir eine Schleife, die in jedem Durchlauf überprüft, welches Studienfach am Index i vorliegt.
+#Dann wird aus dem passenden Vektor der passende Wert auf den Index i in unserem neu erstellten Vektor gesetzt.
+
+IntMatArr = c()
+
+#Wir benötigen vier Variablen, um die vier oben bestimmten Vektoren (MIM, MIS, MID & MII) zu durchlaufen.
+j=1
+k=1
+l=1
+m=1
+
+for(i in 1:100)
+{
+  if(Studienfach[i] == "Mathe")
+  {
+    IntMatArr[Mathematiker[j]] = MIM[j]
+    j = j+1
+  }
+  else if(Studienfach[i] == "Statistik")
+  {
+    IntMatArr[Statistiker[k]] = MIS[k]
+    k = k+1
+  }
+  else if(Studienfach[i] == "Data Science")
+  {
+    IntMatArr[Data_Scientists[l]] = MID[l]
+    l = l+1
+  }
+  else
+  {
+    IntMatArr[Informatiker[m]] = MII[m]
+    m = m+1
+  }
+}
+
+#Analog für Interesse an Programmieren:
+
+IntProArr = c()
+
+n=1
+o=1
+p=1
+q=1
+
+for(r in 1:100)
+{
+  if(Studienfach[r] == "Mathe")
+  {
+    IntProArr[Mathematiker[n]] = PIM[n]
+    n = n+1
+  }
+  else if(Studienfach[r] == "Statistik")
+  {
+    IntProArr[Statistiker[o]] = PIS[o]
+    o = o+1
+  }
+  else if(Studienfach[r] == "Data Science")
+  {
+    IntProArr[Data_Scientists[p]] = PID[p]
+    p = p+1
+  }
+  else
+  {
+    IntProArr[Informatiker[q]] = PII[q]
+    q = q+1
+  }
+}

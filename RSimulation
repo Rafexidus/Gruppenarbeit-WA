@@ -1,9 +1,6 @@
 rm(list = ls()) #loescht alle derzeitigen values
 set.seed(123)
 
-df = data.frame(matrix(ncol = 5, nrow = 100))
-colnames(df) <- c('Alter', 'Studienfach', 'InteresseAnMathematik', 'InteresseAnProgrammieren', 'MatheLK')
-
 Alter = round(rnorm(100,25,2)) #Vektor mit 100 zufälligen normalverteilten Werten mit EW = 25 und sd = 2
 Studium = c("Statistik", "Data Science", "Mathe", "Informatik") #Vektor mit vier vorgegebenen Studiengängen
 MatheInteresse = c(1,2,3,4,5,6,7)
@@ -36,7 +33,7 @@ PII = sample(ProgrammierenInteresse, length(which(Studienfach == "Informatik" ))
 #Dazu durchlaufen wir eine Schleife, die in jedem Durchlauf überprüft, welches Studienfach am Index i vorliegt.
 #Dann wird aus dem passenden Vektor der passende Wert auf den Index i in unserem neu erstellten Vektor gesetzt.
 
-IntMatArr = c()
+InteresseAnMathematik = c()
 
 #Wir benötigen vier Variablen, um die vier oben bestimmten Vektoren (MIM, MIS, MID & MII) zu durchlaufen.
 j=1
@@ -48,29 +45,28 @@ for(i in 1:100)
 {
   if(Studienfach[i] == "Mathe")
   {
-    IntMatArr[Mathematiker[j]] = MIM[j]
+    InteresseAnMathematik[Mathematiker[j]] = MIM[j]
     j = j+1
   }
   else if(Studienfach[i] == "Statistik")
   {
-    IntMatArr[Statistiker[k]] = MIS[k]
+    InteresseAnMathematik[Statistiker[k]] = MIS[k]
     k = k+1
   }
   else if(Studienfach[i] == "Data Science")
   {
-    IntMatArr[Data_Scientists[l]] = MID[l]
+    InteresseAnMathematik[Data_Scientists[l]] = MID[l]
     l = l+1
   }
   else
   {
-    IntMatArr[Informatiker[m]] = MII[m]
+    InteresseAnMathematik[Informatiker[m]] = MII[m]
     m = m+1
   }
 }
-IntMatArr
 #Analog für Interesse am Programmieren:
 
-IntProArr = c()
+InteresseAnProgrammieren = c()
 
 n=1
 o=1
@@ -81,66 +77,68 @@ for(r in 1:100)
 {
   if(Studienfach[r] == "Mathe")
   {
-    IntProArr[Mathematiker[n]] = PIM[n]
+    InteresseAnProgrammieren[Mathematiker[n]] = PIM[n]
     n = n+1
   }
   else if(Studienfach[r] == "Statistik")
   {
-    IntProArr[Statistiker[o]] = PIS[o]
+    InteresseAnProgrammieren[Statistiker[o]] = PIS[o]
     o = o+1
   }
   else if(Studienfach[r] == "Data Science")
   {
-    IntProArr[Data_Scientists[p]] = PID[p]
+    InteresseAnProgrammieren[Data_Scientists[p]] = PID[p]
     p = p+1
   }
   else
   {
-    IntProArr[Informatiker[q]] = PII[q]
+    InteresseAnProgrammieren[Informatiker[q]] = PII[q]
     q = q+1
   }
 }
 
+#Nun möchten wir den letzten Vektor für unseren Datensatz erstellen.
+#Dieser beinhaltet die Angaben, ob jemand einen Mathe-LK belegt hatte.
+#Wir geben unsere Wahrscheinlichkeiten wieder nach Logik an.
+#Dabei gilt: Desto höher das Interesse an Mathe,
+#desto größer die Wahrscheinlichkeit, dass jene Person im Mathe-LK war.
 
-#Hier unten folgen vier Vektoren mit den Antworten der Studenten, ob sie einen Mathe LK belegt hatten.
-#Für alle vier Studiengänge setzen sich unterschiedliche Wahrscheinlichkeiten für die Antworten zusammen.
-#Wieder sind die Verteilungen nach Logik gefallen.
+MatheLK = c()
 
-MatheMatheLK = sample(MatheLKJaNein, length(which(Studienfach == "Mathe")), replace = TRUE, prob = c(0.9, 0.1))
-StatistikMatheLK = sample(MatheLKJaNein, length(which(Studienfach == "Statistik")), replace = TRUE, prob = c(0.8, 0.2))
-DataScienceMatheLK = sample(MatheLKJaNein, length(which(Studienfach == "Data Science")), replace = TRUE, prob = c(0.6,0.4))
-InformatikMatheLK = sample(MatheLKJaNein, length(which(Studienfach == "Informatik" )), replace = TRUE, prob = c(0.33, 0.67))
-
-
-#Analoge Schleife wie im obigen Fällen
-
-n=1
-o=1
-p=1
-q=1
-
-LKArr = c()
-
-for(r in 1:100)
+for(i in 1:100)
 {
-  if(Studienfach[r] == "Mathe")
+  if(InteresseAnMathematik[i] == "7")
   {
-    LKArr[Mathematiker[n]] = MatheMatheLK[n]
-    n = n+1
+    MatheLK[i] = sample(MatheLKJaNein,1, replace = TRUE, prob = c(0.95, 0.05))
   }
-  else if(Studienfach[r] == "Statistik")
+  else if(InteresseAnMathematik[i] == "6")
   {
-    LKArr[Statistiker[o]] = StatistikMatheLK[o]
-    o = o+1
+    MatheLK[i] = sample(MatheLKJaNein,1, replace = TRUE, prob = c(0.9, 0.1))
   }
-  else if(Studienfach[r] == "Data Science")
+  else if(InteresseAnMathematik[i] == "5")
   {
-    LKArr[Data_Scientists[p]] = DataScienceMatheLK[p]
-    p = p+1
+    MatheLK[i] = sample(MatheLKJaNein,1, replace = TRUE, prob = c(0.8, 0.2))
   }
-  else
+  else if(InteresseAnMathematik[i] == "4")
   {
-    LKArr[Informatiker[q]] = InformatikMatheLK[q]
-    q = q+1
+    MatheLK[i] = sample(MatheLKJaNein,1, replace = TRUE, prob = c(0.65, 0.35))
   }
+  else if(InteresseAnMathematik[i] == "3")
+  {
+    MatheLK[i] = sample(MatheLKJaNein,1, replace = TRUE, prob = c(0.45, 0.55))
+  }
+  else if(InteresseAnMathematik[i] == "2")
+  {
+    MatheLK[i] = sample(MatheLKJaNein,1, replace = TRUE, prob = c(0.2, 0.8))
+  }
+  else if(InteresseAnMathematik[i] == "1")
+  {
+    MatheLK[i] = sample(MatheLKJaNein,1, replace = TRUE, prob = c(0.05, 0.95))
+  }
+  
 }
+
+#Datensatz result aus unseren fünf Vektoren
+result = data.frame(Alter, Studienfach, InteresseAnMathematik, InteresseAnProgrammieren, MatheLK)
+result
+

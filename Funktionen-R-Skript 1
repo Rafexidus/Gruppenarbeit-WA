@@ -29,6 +29,8 @@ a <- function(x)
   mi <- min(x)
   ma <- max(x)
   sp <- ma - mi
+  n <- length(x)
+  mqa <- sum((x - am)^2) / n
   
   
   return(list("arithmetisches Mittel" = am,
@@ -39,5 +41,6 @@ a <- function(x)
               "Minimum" = mi,
               "Maximum" = ma,
               "Spannweite" = sp,
-              "Quantile" = quantil))
+              "Quantile" = quantil,
+              "Variationskoeffizient" = (sqrt(mqa)/am)))
 }

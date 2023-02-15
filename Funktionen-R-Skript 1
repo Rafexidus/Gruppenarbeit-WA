@@ -1,1 +1,43 @@
+#a) 
 
+#a -  Eine Funktion, die verschiedene geeignete deskriptive Statistiken fuer 
+#     metrische Variablen berechnet und ausgibt.
+#
+#Input: x - ein Vektor, der qualitative Merkmale enthält, die auf einer 
+#           metrischen Skala basieren
+#
+#Output: eine benannte Liste mit folgenden deskriptiven Statistiken:
+#       - arithmetisches Mittel
+#       - 10% getrimmtes Mittel
+#       - Median
+#       - Varianz
+#       - Standardabweichung
+#       - Minimum
+#       - Maximum
+#       - Spannweite
+#       - Quantile 
+
+
+a <- function(x)
+{
+  am <- mean(x)
+  gm <- mean(x,trim = 0.1)
+  med <- median(x)
+  va <- var(x)
+  sa <- sd(x)
+  quantil <- quantile(x, c(0.25,0.5,0.75))
+  mi <- min(x)
+  ma <- max(x)
+  sp <- ma - mi
+  
+  
+  return(list("arithmetisches Mittel" = am,
+              "10% getrimmtes Mittel" = gm,
+              "Median" = med,
+              "Varianz" = va,
+              "Standardabweichung" = sa,
+              "Minimum" = mi,
+              "Maximum" = ma,
+              "Spannweite" = sp,
+              "Quantile" = quantil))
+}

@@ -44,3 +44,26 @@ a <- function(x)
               "Quantile" = quantil,
               "Variationskoeffizient" = (sqrt(mqa)/am)))
 }
+
+
+#b) 
+
+#b -  Eine Funktion, die verschiedene geeignete deskriptive Statistiken
+#     für kategoriale Variablen berechnet und ausgibt
+#
+#Input: x - ein Vektor, der kategoriel skalierte Merkmale enthält
+#
+#Output: : eine Liste welche die Gesamtanzahl der Elemente und den Modus angibt
+
+#Hilfsfuntion die in Funktion-R-Skript-2 ausgelagert werden kann
+modus <- function(x){
+  for(i in 1:length(table(x))){
+    if(table(x)[i] == max(table(x))){
+      return(table(x)[i])
+    }
+  }
+}
+
+b<-function(x){
+  return(list( Anzahl = length(x), "Modus" = modus(x) ))
+}

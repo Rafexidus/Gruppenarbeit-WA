@@ -1,6 +1,7 @@
 rm(list = ls()) #loescht alle derzeitigen values
 set.seed(123)
 
+ID = 1:100
 Alter = round(rnorm(100,25,2)) #Vektor mit 100 zufälligen normalverteilten Werten mit EW = 25 und sd = 2
 Studium = c("Statistik", "Data Science", "Mathe", "Informatik") #Vektor mit vier vorgegebenen Studiengängen
 MatheInteresse = c(1,2,3,4,5,6,7)
@@ -139,8 +140,7 @@ for(i in 1:100)
 }
 
 #Datensatz result aus unseren fünf Vektoren
-result = data.frame(Alter, Studienfach, InteresseAnMathematik, InteresseAnProgrammieren, MatheLK)
+result = data.frame(ID,Alter, Studienfach, InteresseAnMathematik, InteresseAnProgrammieren, MatheLK)
 result
-
 
 write.csv(result, file ="SimulierteDaten.csv") 

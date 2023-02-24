@@ -142,5 +142,5 @@ for(i in 1:100)
 result = data.frame(Alter, Studienfach, InteresseAnMathematik, InteresseAnProgrammieren, MatheLK)
 result
 
-csvresult = write.csv(result)
 
+write.csv(result, file ="SimulierteDaten.csv") 

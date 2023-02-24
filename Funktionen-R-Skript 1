@@ -70,3 +70,29 @@ modus <- function(x){
 b<-function(x){
   return(list( Anzahl = length(x), "Modus" = modus(x) ))
 }
+
+
+#c)
+
+#c - Eine Funktion, die geeignete deskriptive bivariate Statistiken fuer
+#den Zusammenhang zwischen zwei kategorialen Variablen
+#berechnet ausgibt
+#
+#
+#Input: x,y,z: x = Kategorialer Vektor, y = Kategorialer Vektor, z = Wert von 0 oder 1
+#
+#
+#Output: z = 0: Gibt verschiedene Koeffizienten für x und y an.
+#        z = 1: Gibt den Chi^2 Test für x und y an.
+#
+# 
+
+
+c <- function(x,y,z)
+{
+  if(z == 0){
+  return(Assocs(table(x,y)))
+  }
+  if(z == 1)
+  return(chisq.test(x,y))
+}

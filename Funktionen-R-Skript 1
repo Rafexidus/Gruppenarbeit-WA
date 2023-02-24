@@ -1,7 +1,5 @@
 install.packages("DescTools")
 library(DescTools)
-install.packages("corrplot")
-library(corrplot)
 #a) 
 
 #a -  Eine Funktion, die verschiedene geeignete deskriptive Statistiken fuer 
@@ -91,11 +89,21 @@ b<-function(x){
 
 c <- function(x,y,z)
 {
-  if(z == 0){
-  return(Assocs(table(x,y)))
+  if(length(x) == length(y))
+  {
+    if(z == 0)
+    {
+      return(Assocs(table(x,y)))
+    }
+    if(z == 1)
+    {
+      return(chisq.test(x,y))
+    }
   }
-  if(z == 1)
-  return(chisq.test(x,y))
+  else
+  {
+    return("Die Varaiblen x und y muessen die gleiche Laenge haben")
+  }
 }
 
 
@@ -103,10 +111,49 @@ c <- function(x,y,z)
 
 #d)
 
+#d - Eine Funktion, die geeignete deskriptive bivariate Statistiken für
+#den Zusammengang zwischen einer metrischen und einer
+#dichotomen Variablen berechnet und ausgibt
 
 
 
 
+#e)
 
+#e -  Eine Funktion, die eine mindestens ordinal skalierte Variable
+#quantilbasiert kategorisiert (z.B. in "niedrig", "mittel", "hoch")
+#
+#
+#Input: x = ordinal skalierter Vektor
+#
+#Output: Liste 
+#
+#
 
-
+e = function(x)
+{
+  if (!is.numeric(x)){
+    return("Variablen sind nicht ordinal")
+  }
+  else
+  {
+    v = c()
+    for( i in 1:length(x))
+    {
+      if(x[i] < quantile(x,0.25))
+      {
+        v[i] = "niedrig"
+      }
+      if(x[i] >= quantile(x,0.25) & x[i] <= quantile(x,0.65))
+      {
+        v[i] = "mittel"
+      }
+      if(x[i] > quantile(x,0.65))
+      {
+        v[i] = "hoch"
+      }
+    }
+    tabelle = table(v)
+    return(list("Vektor" = v,"Tabelle" = tabelle))
+  }
+}

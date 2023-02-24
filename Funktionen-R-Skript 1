@@ -1,3 +1,6 @@
+install.packages("DescTools")
+library(DescTools)
+
 #a) 
 
 #a -  Eine Funktion, die verschiedene geeignete deskriptive Statistiken fuer 

@@ -1,6 +1,7 @@
 install.packages("DescTools")
 library(DescTools)
-
+install.packages("corrplot")
+library(corrplot)
 #a) 
 
 #a -  Eine Funktion, die verschiedene geeignete deskriptive Statistiken fuer 
@@ -96,3 +97,16 @@ c <- function(x,y,z)
   if(z == 1)
   return(chisq.test(x,y))
 }
+
+
+
+
+#d)
+
+
+
+
+
+
+
+

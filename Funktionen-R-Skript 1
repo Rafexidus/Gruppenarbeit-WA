@@ -111,8 +111,18 @@ cc <- function(x,y,z)
 #d)
 
 #d - Eine Funktion, die geeignete deskriptive bivariate Statistiken fuer
-#den Zusammengang zwischen einer metrischen und einer
+#den Zusammenhang zwischen zwischen einer metrischen und einer
 #dichotomen Variablen berechnet und ausgibt
+#
+#
+#Input: a,b: a = Vektor mit metrischen Variablen, b = Vektor mit dichotomen Variablen
+#
+#
+#Output: Gibt die Korrelation r zwischen den Variablen a und b aus.
+#          r = [-1,1]
+#          r = 1 positiver Zusammenhang, r = -1 negativer Zusammenhang
+# 
+#
 
 d = function(a,b){
   neu = c()
@@ -132,7 +142,7 @@ d = function(a,b){
   }else{
     stop("a nicht numerisch")
   }
-  return(cor(a,neu))
+  return(cor(a,neu))      
     
 }
 

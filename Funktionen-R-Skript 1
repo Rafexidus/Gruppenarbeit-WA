@@ -215,6 +215,6 @@ f = function(a,b,c,d){
 
 #Fuer das testen der Funktion f
 
-f(result$MatheLK, result$InteresseAnMathematik, result$InteresseAnProgrammieren, result$Alter)
+f(result$Studienfach, result$InteresseAnMathematik, result$InteresseAnProgrammieren, result$Alter)
 
 

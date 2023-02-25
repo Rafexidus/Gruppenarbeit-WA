@@ -1,4 +1,3 @@
-install.packages("DescTools")
 library(DescTools)
 #a) 
 
@@ -51,7 +50,7 @@ a <- function(x)
 #b) 
 
 #b -  Eine Funktion, die verschiedene geeignete deskriptive Statistiken
-#     fÃ¼r kategoriale Variablen berechnet und ausgibt
+#     fuer kategoriale Variablen berechnet und ausgibt
 #
 #Input: x - ein Vektor, der kategoriel skalierte Merkmale enthaelt
 #
@@ -81,8 +80,8 @@ b<-function(x){
 #Input: x,y,z: x = Kategorialer Vektor, y = Kategorialer Vektor, z = Wert von 0 oder 1
 #
 #
-#Output: z = 0: Gibt verschiedene Koeffizienten für x und y an.
-#        z = 1: Gibt den Chi^2 Test für x und y an.
+#Output: z = 0: Gibt verschiedene Koeffizienten fÃ¼r x und y an.
+#        z = 1: Gibt den Chi^2 Test fÃ¼r x und y an.
 #
 # 
 
@@ -166,10 +165,30 @@ e = function(x)
 #kategorialen Variablen erstellt
 #
 #
-#Input:
+#Input: x = Vektor mit kategoriellen Variablen
+#       y = Vektor mit kategoriellen Variablen fuer Mosaikplot
 #
-#Output:
+#Output: je nachdem ob in x numerische Werte enthaelt werden 2 bis 4 Grafiken
+#        zur Veranschaulichung der Daten abgebildet
 #
 #
 
+f<-function(x,y)
+{
+  par(mar=c(5.1,4.1,2.1,2.1), mfrow=c(2,2))
+if(is.numeric(x)){
+ stripchart(x, method="stack",pch=22,at=0.2, axes=FALSE, bg="grey",
+            xlim=range(pretty(x)))
+ axis(1)
+}
+  
+ if(is.numeric(x)){
+ boxplot(x, horizontal=TRUE)
+ }
 
+  barplot(table(x), ylab= "absolute Haeufigkeiten", 
+          xlab= deparse(substitute(x)),
+          ylim = c(0, max(table(x)+6)))
+  
+  mosaicplot(~ x+y, main="Mosaikplot")
+}

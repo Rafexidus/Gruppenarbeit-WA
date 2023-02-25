@@ -66,7 +66,8 @@ modus <- function(x){
 }
 
 b<-function(x){
-  return(list( Anzahl = length(x), "Modus" = modus(x) ))
+sum<- table(x)
+  return(list( Anzahl = length(x),"Anzahl"=sum, "Modus" = modus(x) ))
 }
 
 

@@ -114,7 +114,25 @@ cc <- function(x,y,z)
 #den Zusammengang zwischen einer metrischen und einer
 #dichotomen Variablen berechnet und ausgibt
 
-
+d = function(a,b){
+  if(is.numeric(a)){                  #a numerisch?
+    if(!is.numeric(b)){               #b dichotom?
+      for(i in 1:length(b)){        
+        temp = b[1] 
+        if(b[i] = temp){              #macht b zu einem Vektor mit 0 und 1
+          b[i] = 1
+        }else{
+          b[i] = 0
+        }
+      }
+    }else{
+      stop("b nicht dichotom")
+    }
+    
+    
+  }
+    
+}
 
 
 

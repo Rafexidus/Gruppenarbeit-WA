@@ -192,3 +192,18 @@ if(is.numeric(x)){
   
   mosaicplot(~ x+y, main="Mosaikplot")
 }
+
+
+#f2)
+
+f2 = function(a,b,c)
+{
+  par(mfrow = c(2,2),oma = c(0, 0, 2, 0))
+  mtext("Visualisierung von kategorialen Variablen", outer = TRUE, cex = 2)
+  
+  barplot(table(a), ylab = "absolute Haeufigkeiten", xlab = deparse(substitute(a)),
+          ylim = c(0, max(table(a)+5)), col = blues9[(3:9)], main = deparse(substitute(a)), cex.main = 1.5)
+  pie(table(b), radius = 1, col = blues9[(2:9)], main = deparse(substitute(b)), cex.main = 1.5)
+  boxplot(c, col = "lightblue", main = deparse(substitute(c)), cex.main = 1.5)
+}
+

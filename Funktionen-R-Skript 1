@@ -73,21 +73,20 @@ sum<- table(x)
 
 #c)
 
-#c - Eine Funktion, die geeignete deskriptive bivariate Statistiken fuer
-#den Zusammenhang zwischen zwei kategorialen Variablen
-#berechnet ausgibt
+#c -  Eine Funktion, die geeignete deskriptive bivariate Statistiken fuer
+#     den Zusammenhang zwischen zwei kategorialen Variablen
+#     berechnet ausgibt
 #
-#
-#Input: x,y,z: x = Kategorialer Vektor, y = Kategorialer Vektor, z = Wert von 0 oder 1
-#
+#Input: x,y,z:  x = Kategorialer Vektor, 
+#               y = Kategorialer Vektor, 
+#               z = Wert von 0 oder 1
 #
 #Output: z = 0: Gibt verschiedene Koeffizienten für x und y an.
 #        z = 1: Gibt den Chi^2 Test für x und y an.
 #
-# 
 
 
-cc <- function(x,y,z)
+c <- function(x,y,z)
 {
   if(length(x) == length(y))
   {
@@ -111,19 +110,18 @@ cc <- function(x,y,z)
 
 #d)
 
-#d - Eine Funktion, die geeignete deskriptive bivariate Statistiken fuer
-#den Zusammenhang zwischen zwischen einer metrischen und einer
-#dichotomen Variablen berechnet und ausgibt
+#d -  Eine Funktion, die geeignete deskriptive bivariate Statistiken fuer
+#     den Zusammenhang zwischen zwischen einer metrischen und einer
+#     dichotomen Variablen berechnet und ausgibt
 #
 #
-#Input: a,b: a = Vektor mit metrischen Variablen, b = Vektor mit dichotomen Variablen
-#
+#Input: a,b:  a = Vektor mit metrischen Variablen, 
+#             b = Vektor mit dichotomen Variablen
 #
 #Output: Gibt die Korrelation r zwischen den Variablen a und b aus.
 #          r = [-1,1]
 #          r = 1 positiver Zusammenhang, r = -1 negativer Zusammenhang
 # 
-#
 
 d = function(a,b){
   neu = c()
@@ -155,13 +153,11 @@ d(result$InteresseAnMathematik, result$MatheLK)
 #e)
 
 #e -  Eine Funktion, die eine mindestens ordinal skalierte Variable
-#quantilbasiert kategorisiert (z.B. in "niedrig", "mittel", "hoch")
-#
+#     quantilbasiert kategorisiert (z.B. in "niedrig", "mittel", "hoch")
 #
 #Input: x = ordinal skalierter Vektor
 #
 #Output: Liste 
-#
 #
 
 e = function(x)
@@ -195,9 +191,8 @@ e = function(x)
 
 #f)
 #
-#f - Eine Funktion, die eine geeignete Visualisierung von drei oder vier
-#kategorialen Variablen erstellt
-#
+#f -  Eine Funktion, die eine geeignete Visualisierung von drei oder vier
+#     kategorialen Variablen erstellt
 #
 #Input: a = Vektor mit kategoriellen Variablen fuer ein Balkendiagramm
 #       b = Vektor mit kategoriellen Variablen fuer ein Kreisdiagramm
@@ -206,7 +201,6 @@ e = function(x)
 #
 #Output: je nachdem ob in c und d numerische Werte enthaelten sind, werden 2 bis 4 Grafiken
 #        zur Veranschaulichung der Daten abgebildet
-#
 #
 
 

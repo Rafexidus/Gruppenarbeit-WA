@@ -190,41 +190,53 @@ e = function(x)
 
 
 #f)
-#
+
 #f -  Eine Funktion, die eine geeignete Visualisierung von drei oder vier
 #     kategorialen Variablen erstellt
 #
 #Input: a = Vektor mit kategoriellen Variablen fuer ein Balkendiagramm
 #       b = Vektor mit kategoriellen Variablen fuer ein Kreisdiagramm
-#       c = Vektor mit kategoriellen Variablen fuer ein Stripchart       
-#       d = Vektor mit kategoriellen Variablen fuer ein Boxplot
-#
-#Output: je nachdem ob in c und d numerische Werte enthaelten sind, werden 2 bis 4 Grafiken
+#       c = Vektor mit kategoriellen Variablen fuer ein Boxplot
+#       a & b = werden für den Mosaikplot zusammen benutzt
+#Output: je nachdem ob in c numerische Werte enthaelten sind, werden 3 bis 4 Grafiken
 #        zur Veranschaulichung der Daten abgebildet
 #
 
 
-f = function(a,b,c,d){
-  par(mar=c(5.1,4.1,2.1,2.1), mfrow=c(2,2))
+f <- function(a, b, c) {
+  par(mar = c(5.1, 4.1, 2.1, 2.1), mfrow = c(2, 2))
   
-  barplot(table(a), ylab = "absolute Haeufigkeiten",
-          ylim = c(0, max(table(a)+5)), col = blues9[(3:9)], main = deparse(substitute(a)), cex.main = 1.1)
+  barplot(
+    table(a),
+    ylab = "absolute Haeufigkeiten",
+    ylim = c(0, max(table(a) + 6)),
+    col = blues9[(3:9)],
+    main = deparse(substitute(a)),
+    cex.main = 1.1
+  )
   
-  pie(table(b), radius = 1, col = blues9[(2:9)], main = deparse(substitute(b)), cex.main = 1.1)
+  pie(
+    table(b),
+    radius = 1,
+    col = blues9[(2:9)],
+    main = deparse(substitute(b)),
+    cex.main = 1.1
+  )
   
-  if(is.numeric(c)){
-  stripchart(c, method="stack",pch=22,at=0.2, axes=FALSE, xlim=range(pretty(c)), col = blues9[(9:9)],
-             ylab = "Anzahl der Studierenden", cex.main = 1.1, ylim =c(0,max(table(c)+5)), bg = blues9[4])
-  axis(1)
+  mosaicplot(~ a + b   ,  col = TRUE, main = deparse(substitute(a)))
   
-  if(is.numeric(d)){
-    boxplot(d, col = "lightblue", main = deparse(substitute(d)), cex.main = 1.1, horizontal = TRUE)
+  
+  
+  if (is.numeric(c)) {
+    boxplot(
+      c,
+      col = "lightblue",
+      main = deparse(substitute(c)),
+      cex.main = 1.1,
+      horizontal = TRUE
+    )
   }
-  }
+  
 }
-
-#Fuer das testen der Funktion f
-
-f(result$Studienfach, result$InteresseAnMathematik, result$InteresseAnProgrammieren, result$Alter)
 
 

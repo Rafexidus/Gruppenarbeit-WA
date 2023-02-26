@@ -73,7 +73,7 @@ sum<- table(x)
 
 #c)
 
-#c -  Eine Funktion, die geeignete deskriptive bivariate Statistiken fuer
+#cc -  Eine Funktion, die geeignete deskriptive bivariate Statistiken fuer
 #     den Zusammenhang zwischen zwei kategorialen Variablen
 #     berechnet ausgibt
 #
@@ -86,7 +86,7 @@ sum<- table(x)
 #
 
 
-c <- function(x,y,z)
+cc <- function(x,y,z)
 {
   if(length(x) == length(y))
   {

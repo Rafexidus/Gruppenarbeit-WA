@@ -161,3 +161,49 @@ mosaicplot(~ daten$Studienfach + daten$InteresseAnProgrammieren  ,col = TRUE,
 #Man erkent einen Zusammenhang zwischen Informatik Studenten und gesteigerten Intresse an Programmieren
 #Zwar ist das sehr hohe Interesse (7) bei allen Studiengängen eher gering ausgeprägt, es gibt aber einen deutlich höheren
 #an Informatik Studenten die Intresse der Kategorie 6 haben und auch viele der Kategorie 5.
+
+#Zusatz Durschnittsbewertungen von Mathe/Informatik jeweils Allgemein und aufgeteilt nach Studiengängen 
+
+#Allgemeine Durschnitsbewertung von Programmieren 
+max(cumsum(daten$InteresseAnProgrammieren)/length(daten$ID))
+#4.33
+
+#Durschnitsbewertung von Programmieren bei Informatik Studenten
+max(cumsum(info$InteresseAnProgrammieren)/length(info$ID))
+#5.29
+
+#Durschnitsbewertung von Programmieren bei Data Science Studenten
+max(cumsum(scie$InteresseAnProgrammieren)/length(scie$ID))
+#4.29
+
+#Durschnitsbewertung von Programmieren bei Statistik Studenten
+max(cumsum(stat$InteresseAnProgrammieren)/length(stat$ID))
+#4.18
+
+#Durschnitsbewertung von Programmieren bei Mathe Studenten
+max(cumsum(math$InteresseAnProgrammieren)/length(math$ID))
+#3.13
+
+#Informatik Studenten haben ein überdurschnitliches Interesse am Programmieren.
+
+#Allgemeine Durschnitsbewertung von Mathe Interesse 
+max(cumsum(daten$InteresseAnMathematik)/length(daten$ID))
+#4.55
+
+#Durschnitsbewertung von Mathe bei Informatik Studenten
+max(cumsum(info$InteresseAnMathematik)/length(info$ID))
+#3.58
+
+#Durschnitsbewertung von Mathe bei Data Science Studenten
+max(cumsum(scie$InteresseAnMathematik)/length(scie$ID))
+#4.03
+
+#Durschnitsbewertung von Mathe bei Statistik Studenten
+max(cumsum(stat$InteresseAnMathematik)/length(stat$ID))
+#5.07
+
+#Durschnitsbewertung von Mathe bei Mathe Studenten
+max(cumsum(math$InteresseAnMathematik)/length(math$ID))
+#6.33
+
+#Mathe Studenten haben ein starkes überdurchschnitliches Interesse an Mathematik.

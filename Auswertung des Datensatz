@@ -48,19 +48,28 @@ a(daten$Alter[daten$Studienfach=="Informatik"])
 # oder "Data Science".
 
 #(b) kategoriale Variablen berechnen
-
+# Es werden einige kategorielle Daten auf ihre Merkmale, wie den Modus
+# und die Anzahl der Leute, die das Studienfach belegt haben, untersucht.
 
 b(daten$InteresseAnMathematik)
-#Der Modus liegt bei 7 also herscht im 
-#Datensatz ein  allgemein sehr hohes Interesse an Mathematik 
+# Im Datensatz konnten Werte zwischen 1 - 7, wobei 7 sehr hoch ist, 
+# fuer das Interesse an der Mathematik vergeben werden.
+# Der Modus fuer das Interesse an der Mathematik liegt bei 7, 
+# also herrscht im Datensatz ein allgemein sehr hohes Interesse an Mathematik.
+
+
+b(daten$MatheLK)
+# Ueber die Haelfte der Studierenden (65) hatten in der Schule Mathe-LK.
+# Hingegen hatten 35 keinen.
+
 b(daten$InteresseAnProgrammieren)
 #Der Modus liegt bei 5
 b(daten$Studienfach)
-#Die Modus liegt bei Data Science. Dieses Fach studieren 34 Studenten
+#Die Modus liegt bei Data Science. Dieses Fach studieren 34 Studenten.
+# Am zweithaeufigsten ist das Studium Statistik verteten.
+# 24 Personen des Datensatz studieren Informatik.
+#Der Studiengang der am wenigsten vertreten ist, ist Mathe mit 15 Studierenden.
 
-b(daten$MatheLK)
-#Es haben mehr Personen des Datensatz Mathe-LK gehabt.
-#65 hatten Mathe-LK, hingegen hatten 35 keinen.
 
 #(c) bivariate Statistik zweier kategorialen Variablen
 cc(daten$InteresseAnMathe, daten$InteresseAnProgrammieren, z=0)

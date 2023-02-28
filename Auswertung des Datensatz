@@ -149,3 +149,15 @@ f(daten$Studienfach, daten$MatheLK,
 #dem teilnehmen am Mathe-LK in der Schule
 #Der Boxplot zeigt uns die Verteilung fuer das Interesse an Programmieren.
 
+#Extra Mosaikplots um den Zusammenhang zwischen Interesse und Studienfach darzustellen:
+mosaicplot(~ daten$Studienfach + daten$InteresseAnMathematik  ,col = TRUE,
+           main ="Studienfach in Relation Interesse an Mathe")
+           
+#Man erkennt einen deutlichen Zusammhang zwischen Mathe Studenten und einem hohen Interesse an Mathe
+
+mosaicplot(~ daten$Studienfach + daten$InteresseAnProgrammieren  ,col = TRUE,
+           main ="Studienfach in Relation Interesse an Programmieren")
+           
+#Man erkent einen Zusammenhang zwischen Informatik Studenten und gesteigerten Intresse an Programmieren
+#Zwar ist das sehr hohe Interesse (7) bei allen Studiengängen eher gering ausgeprägt, es gibt aber einen deutlich höheren
+#an Informatik Studenten die Intresse der Kategorie 6 haben und auch viele der Kategorie 5.

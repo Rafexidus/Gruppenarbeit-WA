@@ -1,0 +1,105 @@
+#Auswertung vom Datensatz aus (2.) 
+
+#Aufruf der Verwendeten Biboltheken 
+library(DescTools)
+
+#Einlesen der Daten 
+daten<-read.csv("Datensimulation.csv")
+
+#Anwendung der Funktionen aus R-Skript 1
+
+#(a) metrische Variablen berechnen 
+a(daten$Alter) #ueber den gesamten Datensatz
+# Min.  1st Qu.  Median    Mean   3rd Qu.    Max. Stand.
+# 20    24         25     25.21     26        29   1.81
+
+a(daten$Alter[daten$Studienfach=="Statistik"])
+# Min.  1st Qu.  Median    Mean   3rd Qu.    Max. Stand.
+# 21    24         25     25.14     26        29   1.7
+
+a(daten$Alter[daten$Studienfach=="Data Science"])
+# Min.  1st Qu.  Median    Mean   3rd Qu.    Max. Stand.
+# 20    24         25     25.05     26        28   1.85
+
+a(daten$Alter[daten$Studienfach=="Mathe"])
+# Min.  1st Qu.  Median    Mean   3rd Qu.    Max. Stand.
+# 23    24         25     25.33     26.5      29   1.83
+
+a(daten$Alter[daten$Studienfach=="Informatik"])
+# Min.  1st Qu.  Median    Mean   3rd Qu.    Max. Stand.
+# 23    24         25     25.41     27        29   1.93
+
+#Es wird sich die Altersverteilung über den Gesamten Datensatz angeschaut.
+#Danach betrachten wir seperat nochmal die Altersverteilung der einzelnen 
+#Studiengaenge
+
+#(b) kategoriale Variablen berechnen
+b(daten$InteresseAnMathematik)
+#Der Modus liegt bei 7 also herscht im 
+#Datensatz ein  allgemein sehr hohes Interesse an Mathematik 
+b(daten$InteresseAnProgrammieren)
+#Der Modus liegt bei 5
+b(daten$Studienfach)
+#Die Modus liegt bei Data Science. Dieses Fach studieren 34 Studenten
+
+b(daten$MatheLK)
+#Es haben mehr Personen des Datensatz Mathe-LK gehabt.
+#65 hatten Mathe-LK, hingegen hatten 35 keinen.
+
+#(c) bivariate Statistik zweier kategorialen Variablen
+cc(daten$InteresseAnMathe, daten$InteresseAnProgrammieren, z=0)
+#                        estimate lwr.ci  upr.ci
+#Contingency Coeff.       0.5654       -       -
+#Cramer V                 0.2799  0.0000  0.2503
+#Kendall Tau-b           -0.1692 -0.3091 -0.0293
+#Goodman Kruskal Gamma   -0.2028 -0.3699 -0.0357
+#Stuart Tau-c            -0.1626 -0.2972 -0.0281
+#Somers D C|R            -0.1664 -0.3047 -0.0281
+#Somers D R|C            -0.1720 -0.3139 -0.0301
+#Pearson Correlation     -0.2205 -0.3996 -0.0252
+#Spearman Correlation    -0.2248 -0.4034 -0.0297
+#Lambda C|R               0.1316  0.0000  0.2910
+#Lambda R|C               0.1375  0.0000  0.2832
+#Lambda sym               0.1346  0.0157  0.2536
+#Uncertainty Coeff. C|R   0.1660  0.1212  0.2108
+#Uncertainty Coeff. R|C   0.1564  0.1107  0.2022
+#Uncertainty Coeff. sym   0.1611  0.1161  0.2061
+#Mutual Information       0.4221       -       -
+
+cc(daten$InteresseAnMathe, daten$InteresseAnProgrammieren, z=1)
+# Pearson's Chi-squared test
+# X-squared = 46.994, df = 36, p-value = 0.1038
+
+#Es wird untersucht ob ein Zusammenhang zwischen Intresse an Mathe
+#und Interesse an Programmieren vorliegt.
+
+#(d) bivariate Statistik zwischen metrisch und dichotom
+d(daten$InteresseAnMathematik, daten$MatheLK)
+#0.6078844
+
+d(daten$InteresseAnProgrammieren, daten$MatheLK)
+#-0.07808854
+
+#Es wird untersucht ob es einen Zusammenhang besteht zwischen 
+#Intresse an Mathe bzw. Interesse an Informatik 
+#und ob die jeweilige Person in der Schule Mathe-LK hatte oder nicht
+
+#(e)  ordinal skalierte Variable quantilbasiert kategorisiert
+e(daten$InteresseAnMathematik)
+#hoch  mittel niedrig 
+# 34      53      13 
+
+e(daten$InteresseAnProgrammieren)
+#hoch  mittel niedrig 
+# 23      68       9
+
+#Wir kategorisieren die Daten Interesse An Mathe/Informatik
+
+#(f) Visualisierung kaegorialer Variablen 
+f(daten$Alter, daten$Studienfach,
+  daten$InteresseAnMathematik)
+
+#Durch die Visualisierung verdeutlichen sich die bereits mit
+#anderen Funktionen ausgewertete Zahlen. 
+#Wir bekommen dadurch ein ituitiveres Verständnis des Datensatz. 
+

@@ -128,10 +128,24 @@ e(daten$InteresseAnProgrammieren)
 #Wir kategorisieren die Daten Interesse An Mathe/Informatik
 
 #(f) Visualisierung kaegorialer Variablen 
-f(daten$Alter, daten$Studienfach,
-  daten$InteresseAnMathematik)
-
 #Durch die Visualisierung verdeutlichen sich die bereits mit
 #anderen Funktionen ausgewertete Zahlen. 
 #Wir bekommen dadurch ein ituitiveres Verständnis des Datensatz. 
+
+f(daten$Alter, daten$Studienfach,
+  daten$InteresseAnMathematik)
+ 
+#Mit dem Balkendiagramm wird die Altersverteilung deutlich 
+#Am Kreisdiagramm ist die Verteilung der verschiednen Studiengänge dargestellt.
+#Am Mosaikplot lässt sich kein Zusammenhang zwischen Alter und Studiengang erkennen.
+#Der Boxplot zeigt uns die Verteilung fuer das Interesse an Programmieren.
+
+f(daten$Studienfach, daten$MatheLK,
+  daten$InteresseAnProgrammieren)
+  
+#Am Balkendiagramm sehen wir die absolute Häufigkeitsverteilung auf die Studiengänge
+#Durch das Kreisdiagramm wird deutlich das der Anteil der Studenten mit Mathe-LK groesser ist
+#Am Mosaikplot sehen wir einen starken Zusammenhang zwischen dem Studiengang Mathe und
+#dem teilnehmen am Mathe-LK in der Schule
+#Der Boxplot zeigt uns die Verteilung fuer das Interesse an Programmieren.
 

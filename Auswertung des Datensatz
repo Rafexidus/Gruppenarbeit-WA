@@ -1,14 +1,18 @@
-#Auswertung vom Datensatz aus (2.) 
+# Auswertung vom Datensatz aus (2.) 
 
-#Aufruf der Verwendeten Biboltheken 
+# Aufruf der Verwendeten Biboltheken 
 library(DescTools)
 
-#Einlesen der Daten 
+# Einlesen der Daten 
 daten<-read.csv("Datensimulation.csv")
 
-#Anwendung der Funktionen aus R-Skript 1
+# Anwendung der Funktionen aus R-Skript 1
 
 #(a) metrische Variablen berechnen 
+# Es wird sich die Altersverteilung über den gesamten Datensatz angeschaut.
+# Danach betrachten wir seperat nochmal die Altersverteilung der einzelnen 
+# Studiengaenge.
+
 a(daten$Alter) #ueber den gesamten Datensatz
 # Min.  1st Qu.  Median    Mean   3rd Qu.    Max. Stand.
 # 20    24         25     25.21     26        29   1.81
@@ -29,11 +33,23 @@ a(daten$Alter[daten$Studienfach=="Informatik"])
 # Min.  1st Qu.  Median    Mean   3rd Qu.    Max. Stand.
 # 23    24         25     25.41     27        29   1.93
 
-#Es wird sich die Altersverteilung über den Gesamten Datensatz angeschaut.
-#Danach betrachten wir seperat nochmal die Altersverteilung der einzelnen 
-#Studiengaenge
+# Die Gesamte Altersstruktur des Datensatzes erstreckt sich von 20 -29 Jahren.
+#
+# Die Studierenden des Datensatzes, die in den Studiengang "Statistik" oder "Data Science"
+# eingeschrieben sind, besitzen eine aehnliche Alterstruktur, da die oben berechneten
+# Kennzahlen nahezu identisch sind.
+#
+# Die Studierenden, die das Studienfach "Mathematik" bzw. "Informatik" belegen, besitzen 
+# ebenfalls eine aehnliche Alterstruktur. 
+# Jedoch sind hier die Studierenden im Mittel etwas aelter und besitzen zwar eine
+# identisches (gerundetes) Maximalalter, wie die Studierenden des Studienfachs
+# "Statistik", jedoch ist der juengste Studierende mit 23 2-3 Jahre aelter als,
+# die juengste studierende Person aus den Studiengaengen "Statistik" 
+# oder "Data Science".
 
 #(b) kategoriale Variablen berechnen
+
+
 b(daten$InteresseAnMathematik)
 #Der Modus liegt bei 7 also herscht im 
 #Datensatz ein  allgemein sehr hohes Interesse an Mathematik 
@@ -74,15 +90,22 @@ cc(daten$InteresseAnMathe, daten$InteresseAnProgrammieren, z=1)
 #und Interesse an Programmieren vorliegt.
 
 #(d) bivariate Statistik zwischen metrisch und dichotom
+
+#Es wird untersucht, ob ein Zusammenhang zwischen der Wahl des Mathe-LK
+#und einem Interesse an Mathe bzw. Interesse am Programmieren 
+#besteht.
+
 d(daten$InteresseAnMathematik, daten$MatheLK)
 #0.6078844
+#
+#Zwischen dem Interesse an der Mathematik und der Wahl des Mathe-LK lässt
+#sich anhand eines Wertes von ca. 0.6 ein Zusammenhang vermuten.
 
 d(daten$InteresseAnProgrammieren, daten$MatheLK)
 #-0.07808854
-
-#Es wird untersucht ob es einen Zusammenhang besteht zwischen 
-#Intresse an Mathe bzw. Interesse an Informatik 
-#und ob die jeweilige Person in der Schule Mathe-LK hatte oder nicht
+#
+#Wohingegen zwischen einem Interesse am Programmieren und der Wahl des 
+#Mathe-LK kein (bzw. schwach negativer Zusammenhang) zu erkennen ist.
 
 #(e)  ordinal skalierte Variable quantilbasiert kategorisiert
 e(daten$InteresseAnMathematik)

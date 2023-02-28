@@ -1,0 +1,19 @@
+# In diesem Skript sind Helfer-Funktionen enthalten,
+# die nicht selbst zur Deskription und Visualisierung der Daten verwendet werden,
+# sondern die nur in Funktionen-Skript 1 Anwendung finden.
+# Es sind somit interne Funktionen. 
+
+# Beim Aufgabenteil b) wird eine Hilfsfunktion verwendet, welche den Modus eines Vektors
+# als numerischen Wert zurückgibt.
+
+modus <- function(x){
+  for(i in 1:length(table(x))){ #Schleife, die den Vektor entlanggeht
+    if(table(x)[i] == max(table(x))){ #Haeufigstes element bestimmt
+      return(table(x)[i]) #rueckgabe des gefundenen Wert fuer den Modus
+    }
+  }
+}
+
+# Diese Funktion wird dann bei b) aufgerufen
+# um auf einen Blick das häufigst vertretene 
+# Element des angegebenen Vektors bestimmen zu können. 
